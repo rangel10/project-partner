@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+class App extends Component { 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        
+      <div>
+        <section class="login-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 login-sec">
+                        <h2 class="text-center">Iniciar Sesión</h2>
+                        <form class="login-form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="text-uppercase"> Usuario </label>
+                                <input type="text" class="form-control" placeholder=""></input>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1" class="text-uppercase">Contraseña </label>
+                                <input type="password" class="form-control" placeholder=""></input>
+                            </div>
+                            
+                        </form>
+
+                        <div> 
+                          <button class="btn btn-login"> Ingresar </button>
+                        </div>
+                        <div class="copy-text">Created with <i class="fa fa-heart"></i> by Juan Sebastian Ramos y Camilo Anzola </div>
+                    </div>
+
+                    <div class="col-md-8 banner-sec">
+                    </div>
+                </div>
+            </div>
+        </section>
       </div>
     );
   }
