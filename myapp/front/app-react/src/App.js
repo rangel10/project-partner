@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component { 
+
+  register(){
+    console.log("jeje");
+  }  
+
   render() {
     return (
         
@@ -23,9 +28,18 @@ class App extends Component {
                             </div>
                             
                         </form>
+                        <div class="row">
 
-                        <div> 
+                        <div class="col-md-4"> 
                           <button class="btn btn-login"> Ingresar </button>
+                          
+                        </div>
+                        <div class="col-md-4">
+
+                        <button onClick={ this.register } class="btn btn-login"> Registrate Aquí </button>
+                        
+                        </div>
+
                         </div>
                         <div class="copy-text">Created with <i class="fa fa-heart"></i> by Juan Sebastian Ramos y Camilo Anzola </div>
                     </div>
