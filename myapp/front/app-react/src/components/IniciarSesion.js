@@ -1,24 +1,71 @@
 import React, { Component } from "react";
+import {create} from './api-user.js'
+import {signin} from './api-user.js'
 
 export default class LogIn extends React.Component {
 	constructor (props) {
+
 		super(props);
 		this.state = {
             mensaje: "Iniciar Sesión",
-            nombre: null
-
+            nombre: null,
+            email:null,
+            contraseña:null,
+            open: false,
+            error: ''
 		};
 	}
 
     register(){
 
-    this.setState({mensaje:"Registrate"});
+        this.setState({mensaje:"Registrate"});
 
     }
 
-    login(){
+    login = () => {
         this.setState({mensaje:"Iniciar Sesión"});
-    }  
+        const user = {
+         email: this.state.email || undefined,
+        password: this.state.password || undefined
+    }
+
+    signin(user).then((data) => {
+      if (data.error) {
+        this.setState({error: data.error})
+      
+      }
+    })
+  }
+
+    cambiarNombre(event){
+        this.setState({nombre:event.target.value});
+    }
+
+    cambiarEmail(event){
+        this.setState({email:event.target.value});
+    }
+
+    cambiarContraseña(event){
+        this.setState({contraseña:event.target.value});
+    }
+
+    signUp = () => {
+
+    const user = {
+      nombre: this.state.nombre || undefined,
+      email: this.state.email || undefined,
+      contraseña: this.state.contraseña || undefined
+    }
+    create(user).then((data) => {
+
+         if (data.error) {
+           this.setState({error: data.error})
+         } else {
+           this.setState({error: '', open: true})
+       }
+    })
+  }
+
 
 	render () {
 
@@ -27,8 +74,9 @@ export default class LogIn extends React.Component {
 		
         if(this.state.mensaje == "Registrate")
         {
-            nombre = (<div><label for="exampleInputEmail1" class="text-uppercase"> Nombre </label>
-                                <input type="text" class="form-control" placeholder=""></input></div>)
+            nombre = (<div><label for="exampleInputEmail1" class="text-uppercase" > Nombre </label>
+                                <input type="text" class="form-control" placeholder="" onChange={(evt)=>this.cambiarNombre(evt)}
+                        required ></input></div>)
         }
 
         if(this.state.mensaje == "Iniciar Sesión")
@@ -48,7 +96,7 @@ export default class LogIn extends React.Component {
         {
             botones =( <div class="row">
 
-                          <button onClick={ this.login.bind(this) } class="btn btn-login"> Registrarme </button>
+                          <button onClick={ this.signUp.bind(this) } class="btn btn-login"> Registrarme </button>
                           
                         </div>)
         }
@@ -69,12 +117,14 @@ export default class LogIn extends React.Component {
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="text-uppercase"> Email </label>
-                                <input type="text" class="form-control" placeholder=""></input>
+                                <input type="text" class="form-control" placeholder="" onChange={(evt)=>this.cambiarEmail(evt)}
+                        required ></input>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputPassword1" class="text-uppercase">Contraseña </label>
-                                <input type="password" class="form-control" placeholder=""></input>
+                                <input type="password" class="form-control" placeholder="" onChange={(evt)=>this.cambiarContraseña(evt)}
+                        required></input>
                             </div>
                             
                         </form>
