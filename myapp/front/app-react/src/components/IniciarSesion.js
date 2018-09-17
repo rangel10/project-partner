@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import {create} from './api-user.js'
-import {signin} from './api-user.js'
+import {create} from './api-user.js';
+import {signin} from './api-user.js';
+import { browserHistory } from 'react-router';
+import ReactDOM from 'react-dom';
+import User from './user.js';
+
 
 export default class LogIn extends React.Component {
 	constructor (props) {
@@ -23,14 +27,27 @@ export default class LogIn extends React.Component {
     }
 
     login = () => {
-        this.setState({mensaje:"Iniciar Sesión"});
-        const user = {
-         email: this.state.email || undefined,
-        password: this.state.password || undefined
+        browserHistory.push("/usuarios");
+        ReactDOM.render(<User />, document.getElementById("root"));
+    
+        // this.setState({mensaje:"Iniciar Sesión"});
+        // const user = {
+        //  email: this.state.email || undefined,
+        // password: this.state.password || undefined 
     }
 
+<<<<<<< HEAD
 
   }
+=======
+    // signin(user).then((data) => {
+    //   if (data.error) {
+    //     this.setState({error: data.error})
+      
+    //   }
+    // })
+  
+>>>>>>> 5730736c1a78222832b304ad24f8c45c7073a3b6
 
     cambiarNombre(event){
         this.setState({nombre:event.target.value});
@@ -154,3 +171,4 @@ export default class LogIn extends React.Component {
 		);
 	}
 }
+
