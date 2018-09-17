@@ -36,10 +36,8 @@ export default class LogIn extends React.Component {
         // password: this.state.password || undefined 
     }
 
-<<<<<<< HEAD
 
   }
-=======
     // signin(user).then((data) => {
     //   if (data.error) {
     //     this.setState({error: data.error})
@@ -47,7 +45,6 @@ export default class LogIn extends React.Component {
     //   }
     // })
   
->>>>>>> 5730736c1a78222832b304ad24f8c45c7073a3b6
 
     cambiarNombre(event){
         this.setState({nombre:event.target.value});

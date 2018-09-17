@@ -15,8 +15,20 @@ var nameSchema = new mongoose.Schema({
  email: String,
  contraseña: String
 });
+var projectSchema = new mongoose.Schema({
+ projectNumber: Number,
+ titulo: String,
+ reviews: Number,
+ descripcion: String,
+ dinero: Number,
+ vacantes: Number,
+ imagen: String,
+ comentario: String
+});
 
 var User = mongoose.model("User", nameSchema);
+
+var Project = mongoose.model("Project", projectSchema);
 
 // Database Name
 const dbName = 'db_project';
@@ -34,6 +46,17 @@ const findDocuments = function(db, callback) {
     callback(docs);
   });
 }
+const findProjects = function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('projects');
+  // Find some documents
+  collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+    callback(docs);
+  });
+}
 function getData(callback) {
   MongoClient.connect(url, function(err, client) {
   assert.equal(null, err);
@@ -41,6 +64,19 @@ function getData(callback) {
 
   const db = client.db(dbName);
   findDocuments(db,(data) =>{
+      callback(data);
+      client.close();
+  });
+
+});
+}
+function getProjects(callback) {
+  MongoClient.connect(url, function(err, client) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+
+  const db = client.db(dbName);
+  findProjects(db,(data) =>{
       callback(data);
       client.close();
   });
@@ -71,11 +107,7 @@ MongoClient.connect(url, function(err, client) {
 
 
 /* GET home page. */
-<<<<<<< HEAD
-router.get("/getData", function(req, res) {
-=======
 router.get('/getData', function(req, res) {
->>>>>>> 5730736c1a78222832b304ad24f8c45c7073a3b6
     getData((data) => 
   res.send(data)
   );
@@ -83,7 +115,14 @@ router.get('/getData', function(req, res) {
 });
 
 
-<<<<<<< HEAD
+router.get('/getProjects', function(req, res) {
+    getProjects((data) => 
+  res.send(data)
+  );
+
+});
+
+
 router.post("/login", (req, res) => {
 var myData = new User(req.body);
  myData.save()
@@ -95,22 +134,17 @@ var myData = new User(req.body);
  });
 });
 
-
-module.exports = router;
-=======
-router.post("/", (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  console.log("Postiando ando");
-    var myData = new User(req.body);
-    myData.save()
-        .then(item => {
-            res.send("Name saved to database");
-        })
-        .catch(err => {
-            res.status(400).send("Unable to save to database");
-        });
+router.post("/project", (req, res) => {
+var myData = new Project(req.body);
+ myData.save()
+ .then(item => {
+ res.send("item saved to database");
+ })
+ .catch(err => {
+ res.status(400).send("unable to save to database");
+ });
 });
 
 
 module.exports = router;
->>>>>>> 5730736c1a78222832b304ad24f8c45c7073a3b6
+
