@@ -29,12 +29,7 @@ export default class LogIn extends React.Component {
         password: this.state.password || undefined
     }
 
-    signin(user).then((data) => {
-      if (data.error) {
-        this.setState({error: data.error})
-      
-      }
-    })
+
   }
 
     cambiarNombre(event){
@@ -51,18 +46,28 @@ export default class LogIn extends React.Component {
 
     signUp = () => {
 
-    const user = {
-      nombre: this.state.nombre || undefined,
-      email: this.state.email || undefined,
-      contraseña: this.state.contraseña || undefined
-    }
-    create(user).then((data) => {
+ fetch("/url")
+    fetch("http://localhost:3001/login", {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+            nombre: "nombre1",
+            email: "email1",
+            contraseña: "contraseña1"
+         }),
+        headers: new Headers({'content-type': 'application/json'})
+    })
+    .then(function (response){
+        console.log(response);
+            return response.json();
 
-         if (data.error) {
-           this.setState({error: data.error})
-         } else {
-           this.setState({error: '', open: true})
-       }
+    })
+    .then(function (data) {
+        console.log(data);
+        // Aca mete el codigo. Data es lo que retorna el post.
+        this.state.nombre = data.nombre;
+        this.state.email = data.email;
+        this.state.contraseña = data.contraseña;
     })
   }
 
@@ -72,14 +77,14 @@ export default class LogIn extends React.Component {
         let nombre = null;
         let botones = null;
 		
-        if(this.state.mensaje == "Registrate")
+        if(this.state.mensaje === "Registrate")
         {
             nombre = (<div><label for="exampleInputEmail1" class="text-uppercase" > Nombre </label>
                                 <input type="text" class="form-control" placeholder="" onChange={(evt)=>this.cambiarNombre(evt)}
                         required ></input></div>)
         }
 
-        if(this.state.mensaje == "Iniciar Sesión")
+        if(this.state.mensaje === "Iniciar Sesión")
         {
             botones =( <div class="row"><div class="col-md-4"> 
                           <button onClick={ this.login.bind(this) } class="btn btn-login"> Ingresar </button>
@@ -92,7 +97,7 @@ export default class LogIn extends React.Component {
                         </div> </div>)
         }
 
-        if(this.state.mensaje == "Registrate")
+        if(this.state.mensaje === "Registrate")
         {
             botones =( <div class="row">
 
