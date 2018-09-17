@@ -37,7 +37,7 @@ export default class LogIn extends React.Component {
     }
 
 
-  }
+  
     // signin(user).then((data) => {
     //   if (data.error) {
     //     this.setState({error: data.error})
@@ -72,8 +72,7 @@ export default class LogIn extends React.Component {
         headers: new Headers({'content-type': 'application/json'})
     })
     .then(function (response){
-        console.log(response);
-            return response.json();
+        response.json();
 
     })
     .then(function (data) {

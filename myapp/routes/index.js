@@ -86,14 +86,8 @@ function getProjects(callback) {
 
 
 
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
 
-// Database Name
-const dbName = 'ususarios';
 
 // Use connect method to connect to the server
 MongoClient.connect(url, function(err, client) {
@@ -124,10 +118,15 @@ router.get('/getProjects', function(req, res) {
 
 
 router.post("/login", (req, res) => {
-var myData = new User(req.body);
+var myData = new User({
+  _id: new mongoose.Types.ObjectId(),
+  nombre: req.body.nombre,
+  email: req.body.email,
+  contraseña: req.body.contraseña
+  });
  myData.save()
  .then(item => {
- res.send("item saved to database");
+ res.json(myData);
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
@@ -138,7 +137,7 @@ router.post("/project", (req, res) => {
 var myData = new Project(req.body);
  myData.save()
  .then(item => {
- res.send("item saved to database");
+ res.json(myData);
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
