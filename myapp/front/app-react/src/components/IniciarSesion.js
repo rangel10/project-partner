@@ -45,7 +45,10 @@ export default class LogIn extends React.Component {
     //   }
     // })
   
-
+/* En estas tres funciones se estra sobreescribiendo el estado cada vez que se llan, seria mejor tener un stado con estos 3 atributos
+como {nombre: '', email: '', contrasena: ''} y se actualizarian los atributos necesarios, porque como esta se esta cmabiando todo el estado.
+--code-review
+*/   
     cambiarNombre(event){
         this.setState({nombre:event.target.value});
     }
