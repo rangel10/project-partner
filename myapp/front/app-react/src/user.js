@@ -66,7 +66,7 @@ verProyecto4(){
   			<span>Like</span>
 			</button>
 		}
-		if(!this.state.like1){
+		if(!this.state.like1){ //esto pueder ser reemplazado por un else
 			likeBut1 = <button class="button button-unlike" onClick={ this.like1.bind(this) } >
   			<i class="fa fa-heart"></i>
   			<span>Like</span>
@@ -80,7 +80,7 @@ verProyecto4(){
   			<span>Like</span>
 			</button>
 		}
-		if(!this.state.like2){
+		if(!this.state.like2){  //esto pueder ser reemplazado por un else
 			likeBut2 = <button class="button button-unlike" onClick={ this.like2.bind(this) } >
   			<i class="fa fa-heart"></i>
   			<span>Like</span>
@@ -94,7 +94,7 @@ verProyecto4(){
   			<span>Like</span>
 			</button>
 		}
-		if(!this.state.like3){
+		if(!this.state.like3){ //esto pueder ser reemplazado por un else 
 			likeBut3 = <button class="button button-unlike" onClick={ this.like3.bind(this) } >
   			<i class="fa fa-heart"></i>
   			<span>Like</span>
@@ -108,7 +108,7 @@ verProyecto4(){
   			<span>Like</span>
 			</button>
 		}
-		if(!this.state.like4){
+		if(!this.state.like4){ //esto pueder ser reemplazado por un else
 			likeBut4 = <button class="button button-unlike" onClick={ this.like4.bind(this) } >
   			<i class="fa fa-heart"></i>
   			<span>Like</span>
