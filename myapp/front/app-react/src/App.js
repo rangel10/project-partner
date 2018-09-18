@@ -6,19 +6,19 @@ class App extends Component {
 
     constructor(){
         super();
-        this.login = this.login.bind(this);
+        this.login = this.login.bind(this);  //Esto no es necesario --code-review
     }
 
   login(){
-    this.state({})
+    this.state({})   // El estado puede ir en el constructor  --code-review
   }
-
+//login={this.login.bind(this)} esto no deberia ir en el render  --code-review
   render() {
     return (
         
       <div>
 
-      <IniciarSesion login={this.login.bind(this)}/>
+      <IniciarSesion login={this.login.bind(this)}/>  
         
       </div>
     );
