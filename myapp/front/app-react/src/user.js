@@ -1,3 +1,4 @@
+// Este archivo ya se encuentra en la carpeta components --code-review
 import React, { Component } from 'react';
 import Proyecto from "./components/Proyecto.js";
 import { browserHistory } from 'react-router';
@@ -66,7 +67,7 @@ verProyecto4(){
   			<span>Like</span>
 			</button>
 		}
-		if(!this.state.like1){ //esto pueder ser reemplazado por un else
+		if(!this.state.like1){ //esto pueder ser reemplazado por un else --code-review
 			likeBut1 = <button class="button button-unlike" onClick={ this.like1.bind(this) } >
   			<i class="fa fa-heart"></i>
   			<span>Like</span>
@@ -80,7 +81,7 @@ verProyecto4(){
   			<span>Like</span>
 			</button>
 		}
-		if(!this.state.like2){  //esto pueder ser reemplazado por un else
+		if(!this.state.like2){  //esto pueder ser reemplazado por un else --code-review
 			likeBut2 = <button class="button button-unlike" onClick={ this.like2.bind(this) } >
   			<i class="fa fa-heart"></i>
   			<span>Like</span>
@@ -94,7 +95,7 @@ verProyecto4(){
   			<span>Like</span>
 			</button>
 		}
-		if(!this.state.like3){ //esto pueder ser reemplazado por un else 
+		if(!this.state.like3){ //esto pueder ser reemplazado por un else --code-review
 			likeBut3 = <button class="button button-unlike" onClick={ this.like3.bind(this) } >
   			<i class="fa fa-heart"></i>
   			<span>Like</span>
@@ -108,7 +109,7 @@ verProyecto4(){
   			<span>Like</span>
 			</button>
 		}
-		if(!this.state.like4){ //esto pueder ser reemplazado por un else
+		if(!this.state.like4){ //esto pueder ser reemplazado por un else --code-review
 			likeBut4 = <button class="button button-unlike" onClick={ this.like4.bind(this) } >
   			<i class="fa fa-heart"></i>
   			<span>Like</span>
